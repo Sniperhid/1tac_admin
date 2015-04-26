@@ -1,6 +1,6 @@
 if !(isServer) exitWith {};
 
-private ["_unit","_addons","_objects","_curator","_cfgPatches","_class","_i","_isValidCurator"];
+private ["_unit","_curator","_i","_isValidCurator"];
 _unit = _this select 0;
 if (isNull _unit) exitWith {};
 
@@ -17,7 +17,7 @@ _isValidCurator = false;
         };
     } else {
         if (_x getVariable ["SNIP_ADMIN",false]) then {
-            if (!isPlayer _x) then {
+            if (!isPlayer (getAssignedCuratorUnit _x)) then {
                 _isValidCurator = true;
             };
         };
