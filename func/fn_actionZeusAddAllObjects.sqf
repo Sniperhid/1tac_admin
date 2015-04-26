@@ -1,0 +1,1 @@
+ [[player],'tac1_admin_fnc_zeusAddAllObjects',false] spawn BIS_fnc_MP;    
