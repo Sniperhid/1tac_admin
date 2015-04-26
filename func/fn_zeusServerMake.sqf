@@ -10,6 +10,7 @@ if (!isNull (getAssignedCuratorLogic _unit)) exitWith{}; //already is a curator.
 //Server for an empty curator space. (Assumes mission doesn't preallocate zeuses).
 _isValidCurator = false;
 {
+    _isValidCurator = false;
     if (isNull (getAssignedCuratorUnit _x)) then { 
         if (_x getVariable ["SNIP_ADMIN",false]) then {
             _isValidCurator = true;
@@ -23,9 +24,8 @@ _isValidCurator = false;
     };
 
     if (_isValidCurator) exitWith {
-        _emptyExists = true;
         unassignCurator _x;
-        _x assignCurator _unit;
+        _unit assignCurator _x;
 
         [[_x],'tac1_admin_fnc_zeusSetupSync',_unit] spawn BIS_fnc_MP;  
     };
@@ -47,7 +47,7 @@ if (!_isValidCurator) then {
 
     //Delay to prevent notification.
     _curator spawn {
-        sleep 5;
+        sleep 6;
         {
             if (isPlayer _x) then {
                 _this addCuratorEditableObjects [[_x],true]; 

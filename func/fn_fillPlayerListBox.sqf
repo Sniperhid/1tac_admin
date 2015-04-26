@@ -18,7 +18,9 @@ _groupNum = 1;
 
             _factionImg = getText (configfile >> "CfgFactionClasses" >> (faction _x) >> "icon");
             if (_factionImg != "") then {
-                _control lbSetPicture[_i,_factionImg]; 
+                _control lbSetPicture[_i,_factionImg];
+                _control lbSetPictureColor [_i, [1,1,1,0.7]];
+				_control lbSetPictureColorSelected [_i,[1,1,1,1]];
             };
 
             _i = _i + 1;
