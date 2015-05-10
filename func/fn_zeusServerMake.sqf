@@ -41,6 +41,8 @@ if (!_isValidCurator) then {
     _curator setVariable ["owner",format["%1",_unit,true]];
     _curator setVariable ["Addons",3,true];
     _curator setVariable ["SNIP_ADMIN",true,true];
+    
+
 
     // Do earlier to prevent the the notification from appearing.
     _unit assignCurator _curator;

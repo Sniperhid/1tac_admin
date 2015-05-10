@@ -5,9 +5,9 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		worlds[] = {};
-		requiredAddons[] = {};
+		requiredAddons[] = {"a3_data_f","a3data"};
 		requiredVersion = 1.0;
-		author[] = {"Snippers"};
+		author[] = {"Snippers","Wolfenswan"};
 		authorUrl = "www.teamonetactical.com";
 	};
 };
@@ -43,4 +43,9 @@ class CfgFunctions
             class zeusSetupSync {};
 		};
 	};
+};
+
+
+class CfgDifficulties {
+  default = "Veteran";
 };

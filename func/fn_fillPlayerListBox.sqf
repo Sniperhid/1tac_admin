@@ -1,15 +1,16 @@
  // Fill list with the players
 disableSerialization;
+private["_i","_control","_group","_addGroup"];
+
 _control = ((findDisplay 1888) displayCtrl 1500);
 _i = 0;
-_groupNum = 1;
 {
     _group = _x;
     _addGroup = false;
     {
         if (isPlayer _x) then {
             if (!_addGroup) then {
-                _control lbAdd (format["Grp%1 - %2",_groupNum,name _x]);  
+                _control lbAdd (format["%1 - %2",groupID _group,name _x]);
                 _addGroup = true;
             } else {
                 _control lbAdd (format["        %1",name _x]);  
@@ -26,7 +27,4 @@ _groupNum = 1;
             _i = _i + 1;
         };
     } forEach (units _group);
-    if (_addGroup) then {
-        _groupNum = _groupNum + 1;
-    };
-} forEach allGroups; 
+} forEach allGroups;

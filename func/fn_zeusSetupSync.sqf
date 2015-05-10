@@ -1,7 +1,22 @@
 private["_curator"];
 _curator = _this select 0;
 
+fn_tac1_admin_zeus_placed = {
+    private "_placed";
+    _placed = _this select 1;
+    [_this,"tac1_admin_fnc_zeusServerObjectPlacedSync",false] spawn BIS_fnc_MP;
+    
+    if (local _placed) then {
+        if({!isNil _x} count ["f_param_AISkill_BLUFOR","f_param_AISkill_INDP","f_param_AISkill_OPFOR"] > 0) then {
+            {
+                [_x] call f_fnc_setAISkill;
+            } forEach crew (_placed);
+        };
+    };
+};
+
+
 if (getAssignedCuratorLogic player == _curator) then {
     hint "You have been given Zeus powers";
-    _curator addEventHandler ["CuratorObjectPlaced",{[_this,"tac1_admin_fnc_zeusServerObjectPlacedSync",false] spawn BIS_fnc_MP}];
+    _curator addEventHandler ["CuratorObjectPlaced",{_this call fn_tac1_admin_zeus_placed}];
 };
