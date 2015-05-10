@@ -5,7 +5,7 @@
 
 ![alt text](https://dl.dropboxusercontent.com/u/27305806/admin_tool.jpg "Admin Tool Screenshot")
 
-If you wish to use this admin tool for your community ensure that in func/fn_keyPressed.sqf you modify it so that included steam profiles do not include the default ones, otherwise myself and 1tac admin's will have access to this if we come to your community.
+If you wish to use this admin tool for your community ensure that you modify func/fn_keyPressed.sqf  so that the included steam player ids are removed, otherwise myself and 1tac admin's will have access to this if we come to your community. I would suggest you replace with trusted admins at your own community.
 
 **To use in-game press:** Shift+F1
 
