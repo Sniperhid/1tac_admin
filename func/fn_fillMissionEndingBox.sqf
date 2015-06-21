@@ -26,7 +26,7 @@ _control lbSetData[_i,"asdasdasdga"];
 
 //Alive Players/Ending Data.
 _control = ((findDisplay 1895) displayCtrl 1002);
-_totalAI = 0; _totalPlayers = 0; _spectators = 0;
+_totalAI = 0; _totalPlayers = 0;
 _west = 0; _east = 0; _resistance = 0; _civilian = 0; 
 _westAI = 0; _eastAI = 0; _resistanceAI = 0; _civilianAI = 0;
 {
@@ -50,11 +50,7 @@ _westAI = 0; _eastAI = 0; _resistanceAI = 0; _civilianAI = 0;
         };
     };
 } forEach allUnits;
-{
-    if (isPlayer _x) then {
-        _spectators = _spectators + 1;
-    };
-} forEach ([0,0,0] nearEntities ["VirtualCurator_F",500]);
+_spectators = {isPlayer _x} count ([0,0,0] nearEntities ["VirtualCurator_F",50]);
 _text = format["<t size='1.6'>Alive players: %1 Spectators: %2<br/>Total Alive AI: %3<br />",_totalPlayers,_spectators,_totalAI];
 _text = _text + format ["<t color='#123ae3'>West Players: %1 Alive AI: %2</t><br />",_west,_westAI];
 _text = _text + format ["<t color='#d81212'>East Players: %1 Alive AI: %2</t><br />",_east,_eastAI];

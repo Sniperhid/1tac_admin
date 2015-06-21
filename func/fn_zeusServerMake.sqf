@@ -41,6 +41,7 @@ if (!_isValidCurator) then {
     _curator setVariable ["owner",format["%1",_unit,true]];
     _curator setVariable ["Addons",3,true];
     _curator setVariable ["SNIP_ADMIN",true,true];
+    _curator setVariable ["showNotification",false,true];
     
 
 
@@ -48,14 +49,14 @@ if (!_isValidCurator) then {
     _unit assignCurator _curator;
 
     //Delay to prevent notification.
-    _curator spawn {
-        sleep 6;
-        {
-            if (isPlayer _x) then {
-                _this addCuratorEditableObjects [[_x],true]; 
-            };
-        } forEach playableUnits;
-    };
+    //_curator spawn {
+    //    sleep 6;
+    {
+        if (isPlayer _x) then {
+            _this addCuratorEditableObjects [[_x],true]; 
+        };
+    } forEach playableUnits;
+    // };
 
     _curator setCuratorWaypointCost 0;
     {_curator setCuratorCoef [_x,0];} forEach ["place","edit","delete","destroy","group","synchronize"];

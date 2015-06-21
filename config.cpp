@@ -41,6 +41,8 @@ class CfgFunctions
             class zeusServerMake {};
             class zeusServerObjectPlacedSync {};
             class zeusSetupSync {};
+			class teleportDrawMapIcons {};
+			class teleportMapClick {};
 		};
 	};
 };

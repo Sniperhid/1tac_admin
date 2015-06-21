@@ -10,7 +10,7 @@ _target = objNull;
     _group = _x;
     {
         if (isPlayer _x) then {
-            if (_value == ("" + (getPlayerUID _x))) then {
+            if (_value isEqualTo ("" + (getPlayerUID _x))) then {
                 _target = _x;
             };
         };

@@ -375,11 +375,31 @@ class missionEndingDialog {
             w = 0.391875 * safezoneW;
             h = 0.132 * safezoneH;
         };
-                ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
         // GUI EDITOR OUTPUT END
         ////////////////////////////////////////////////////////
 
         
     };
-    
+};
+
+
+class adminMenuMapDialog {
+	idd = 1949;
+	movingEnable = 0;
+	class controlsBackground {};
+	class objects {};
+	class controls { 
+        class adminTeleportMap : adminMenu_RscMapControl
+        {
+            idc = 26902;
+            type = 100;
+            x = 0 * safezoneW + safezoneX;
+            y = 0 * safezoneH + safezoneY;
+            w = 1 * safezoneW;
+            h = 1 * safezoneH;
+            onDraw = "_this call tac1_admin_fnc_teleportDrawMapIcons";
+            onMouseButtonDown = "_this call tac1_admin_fnc_teleportMapClick";
+        };
+    };
 };

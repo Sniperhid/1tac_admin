@@ -10,10 +10,10 @@ _i = 0;
     {
         if (isPlayer _x) then {
             if (!_addGroup) then {
-                _control lbAdd (format["%1 - %2",groupID _group,name _x]);
+                _i = _control lbAdd (format["%1 - %2",groupID _group,name _x]);
                 _addGroup = true;
             } else {
-                _control lbAdd (format["        %1",name _x]);  
+                _i =_control lbAdd (format["        %1",name _x]);  
             };
             _control lbSetData[_i,""+getPlayerUID _x];
 
@@ -23,8 +23,6 @@ _i = 0;
                 _control lbSetPictureColor [_i, [1,1,1,0.7]];
 				_control lbSetPictureColorSelected [_i,[1,1,1,1]];
             };
-
-            _i = _i + 1;
         };
     } forEach (units _group);
 } forEach allGroups;

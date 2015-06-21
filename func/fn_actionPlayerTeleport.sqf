@@ -11,7 +11,7 @@ _target = objNull;
     _group = _x;
     {
         if (isPlayer _x) then {
-            if (_value == ("" + (getPlayerUID _x))) then {
+            if (_value isEqualTo ("" + (getPlayerUID _x))) exitWith {
                 _target = _x;
             };
         };
@@ -22,20 +22,7 @@ _target = objNull;
 if (_target == objNull) exitWith{ hint "Error: finding unit to teleport"; };  
 
 
+adminMenu_teleportTarget = _target;
 titleText [format ["Click On The Map To Teleport %1",(name _target)], "PLAIN DOWN"]; titleFadeOut 7;
-am_plMapClickEvent=
-{
-    //onMapSingleClick hint format ["Teleported To @\n%1" ,_pos];
-
-    _pos1 =  [(_pos select 0), (_pos select 1), 0];  // 0 is the height on which you tele too 
-    (_this select 0) setPos _pos1;				
-    hint format ["%1 was teleported.",name (_this select 0)];
-
-    onMapSingleClick "";
-    openMap [false, false];
-    createDialog 'playerListDialog';
-};
-
-openMap [true, false];
-adminplayerlist_teleport_target = _target;
-onMapSingleClick "[adminplayerlist_teleport_target] call am_plMapClickEvent";
+closeDialog 1889; //close current dialog
+createDialog "adminMenuMapDialog";
