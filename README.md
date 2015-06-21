@@ -20,4 +20,5 @@ If you wish to use this admin tool for your community ensure that you modify fun
 - F3 Developers - https://github.com/ferstaberinde/F3
 - Head - https://github.com/headswe
 - Folk ARPS
+- Pabst Mirror & Zerith of Bourbon Warfare
 
