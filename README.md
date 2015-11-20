@@ -5,7 +5,7 @@
 
 ![alt text](https://dl.dropboxusercontent.com/u/27305806/admin_tool.jpg "Admin Tool Screenshot")
 
-If you wish to use this admin tool for your community ensure that you modify func/fn_keyPressed.sqf  so that the included steam player ids are removed, otherwise myself and 1tac admin's will have access to this if we come to your community. I would suggest you replace with trusted admins at your own community.
+If you wish to use this admin tool for your community ensure that you modify init.sqf  so that the included steam player IDs are removed, otherwise myself and 1Tac admins will have access to this tool if we come to your community. I would suggest you replace with trusted admins at your own community.
 
 **To use in-game press:** Shift+F1
 
@@ -20,5 +20,5 @@ If you wish to use this admin tool for your community ensure that you modify fun
 - F3 Developers - https://github.com/ferstaberinde/F3
 - Head - https://github.com/headswe
 - Folk ARPS
-- Pabst Mirror & Zerith of Bourbon Warfare
+- AACO, Pabst Mirror & Zerith of Bourbon Warfare
 
