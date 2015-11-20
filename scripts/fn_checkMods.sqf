@@ -25,8 +25,8 @@ if (isServer) then {
 		
                 
         _overlap = (tac1_clientAddons arrayIntersect tac1_serverAddons);
-        _extraAddons = tac1_clientAddons - temp;
-        _missingAddons = tac1_serverAddons - temp;
+        _extraAddons = tac1_clientAddons - _overlap;
+        _missingAddons = tac1_serverAddons - _overlap;
 				
 		uiSleep 2;
 		if (count _missingAddons > 0) then {
@@ -43,6 +43,6 @@ if (isServer) then {
 			//systemChat _message;
 		};
         
-		[format['[MODS] %1 : checks complete',_pName],'tac1_admin_fnc_messageAdmin',true] call BIS_fnc_MP;
+		[format['[MODS] %1 : checks complete',profileName],'tac1_admin_fnc_messageAdmin',true] call BIS_fnc_MP;
 	};
 };
