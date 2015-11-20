@@ -399,6 +399,7 @@ class adminMenuMapDialog {
             w = 1 * safezoneW;
             h = 1 * safezoneH;
             onDraw = "_this call tac1_admin_fnc_teleportDrawMapIcons";
+            onSetFocus = "[] spawn tac1_admin_fnc_teleportMapLoaded";
             onMouseButtonDown = "_this call tac1_admin_fnc_teleportMapClick";
         };
     };

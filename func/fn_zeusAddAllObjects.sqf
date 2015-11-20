@@ -1,6 +1,9 @@
 if !(isServer) exitWith {};
 
-private ["_curator"];
+private ["_curator","_objects"];
 _curator = getAssignedCuratorLogic (_this select 0);
 
-{ if (side _x != sideLogic) then { _curator addCuratorEditableObjects [[_x],true]; }; } forEach allMissionObjects ""; 
+_objects = [];
+{ if (side _x != sideLogic) then { _objects pushBack _x; }; } forEach allMissionObjects ""; 
+
+_curator addCuratorEditableObjects [_objects,true];

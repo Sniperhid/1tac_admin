@@ -17,37 +17,43 @@ class CfgPatches
 
 class CfgFunctions
 {
-    class tac1_admin
+	class tac1_admin
 	{
 		class adminMenu
 		{
 			file="1tac_admin\func";
-            
-            class Init { 
-                postInit=1;
+			class Init { 
+				postInit=1;
 				file = "1tac_admin\init.sqf";
 			};
-            class actionGiveZeus {};
-            class actionGiveZeusSelf {};
-            class actionGroupTeleport {};
-            class actionPlayerTeleport {};
+			class actionGiveZeus {};
+			class actionGiveZeusSelf {};
+			class actionGroupTeleport {};
+			class actionPlayerTeleport {};
 			class actionZeusAddAllObjects {};
-            class endMissionInstant {};
-            class endMissionSmooth {};
-            class fillMissionEndingBox {};
-            class fillPlayerListBox {};
-            class keyPressed {};
-            class zeusAddAllObjects {};
-            class zeusServerMake {};
-            class zeusServerObjectPlacedSync {};
-            class zeusSetupSync {};
+			class endMissionInstant {};
+			class endMissionSmooth {};
+			class fillMissionEndingBox {};
+			class fillPlayerListBox {};
+			class keyPressed {};
+			class zeusAddAllObjects {};
+			class zeusServerMake {};
+			class zeusServerObjectPlacedSync {};
+			class zeusSetupSync {};
 			class teleportDrawMapIcons {};
 			class teleportMapClick {};
+			class teleportMapLoaded {};
+			class messageAdmin {};
+		};
+		class scripts
+		{
+			file="1tac_admin\scripts";
+			class checkMods {};
 		};
 	};
 };
 
 
 class CfgDifficulties {
-  default = "Veteran";
+	default = "Veteran";
 };

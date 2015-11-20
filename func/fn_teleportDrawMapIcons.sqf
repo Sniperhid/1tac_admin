@@ -1,7 +1,6 @@
 disableSerialization;
-private["_pos","_y","_x1","_name","_icon","_color","_fullmapWindow"];
-
-_fullmapWindow = _this select 0;
+private["_name","_icon","_color"];
+params["_fullmapWindow"];
 
 if (isNil "f_cam_blufor_color") then {
     f_cam_blufor_color = [blufor] call bis_fnc_sideColor;
@@ -12,9 +11,6 @@ if (isNil "f_cam_blufor_color") then {
 };
 
 {
-	_pos = getPos _x;
-	_x1 = _pos select 0;
-	_y = _pos select 1;
 	if(alive _x) then {
 		_name = "";
 		if(isPlayer _x) then {_name = name _x};
@@ -34,3 +30,32 @@ if (isNil "f_cam_blufor_color") then {
 		};
 	};
 } forEach allUnits;
+
+//Map Markers - Credit AACO
+{
+    _markerShape = markerShape _x;
+    _markerPos = getMarkerPos _x;
+    _markerSize = getMarkerSize _x;
+    _markerColor = (configfile >> "CfgMarkerColors" >> getMarkerColor _x >> "color") call BIS_fnc_colorConfigToRGBA;
+    _markerDir = markerDir _x;
+    
+    switch (_markerShape) do {
+        case "RECTANGLE": {
+            _markerBrush = getText (configfile >> "cfgMarkerBrushes" >> markerBrush _x >> "texture"); 
+            _fullmapWindow drawRectangle [_markerPos, _markerSize select 0, _markerSize select 1, _markerDir, _markerColor, _markerBrush]
+        };
+        case "ELLIPSE": {
+            _markerBrush = getText (configfile >> "cfgMarkerBrushes" >> markerBrush _x >> "texture"); 
+            _fullmapWindow drawEllipse  [_markerPos, _markerSize select 0, _markerSize select 1, _markerDir, _markerColor, _markerBrush]
+        };
+        case "ICON": {
+            _markerType = getMarkerType _x;
+            if (_markerType != "Empty") then {
+                _multiplier = 20;
+                _markerIcon = getText (configfile >> "CfgMarkers" >> _markerType >> "icon");
+                _markerText = markerText _x;
+                _fullmapWindow drawIcon [_markerIcon, _markerColor, _markerPos, (_markerSize select 0) * _multiplier, (_markerSize select 1) * _multiplier, _markerDir, _markerText, 1];
+            };
+        };
+    };    
+} forEach allMapMarkers;

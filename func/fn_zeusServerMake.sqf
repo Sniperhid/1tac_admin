@@ -1,7 +1,8 @@
 if !(isServer) exitWith {};
 
-private ["_unit","_curator","_i","_isValidCurator"];
-_unit = _this select 0;
+private ["_curator", "_i", "_isValidCurator", "_units"];
+params["_unit"];
+
 if (isNull _unit) exitWith {};
 
 //Prevent duplication.
@@ -51,11 +52,15 @@ if (!_isValidCurator) then {
     //Delay to prevent notification.
     //_curator spawn {
     //    sleep 6;
+    _units = allPlayers;
     {
-        if (isPlayer _x) then {
-            _this addCuratorEditableObjects [[_x],true]; 
+        if (!alive _x or (side _x isEqualTo sideLogic)) then {
+            _units set [_forEachIndex,0];  
         };
-    } forEach playableUnits;
+    } forEach allPlayers;
+    _units = _units - [0];
+    _curator addCuratorEditableObjects [_units,true]; 
+
     // };
 
     _curator setCuratorWaypointCost 0;

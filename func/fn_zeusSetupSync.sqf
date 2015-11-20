@@ -1,9 +1,8 @@
-private["_curator"];
-_curator = _this select 0;
+params["_curator"];
 
 fn_tac1_admin_zeus_placed = {
-    private "_placed";
-    _placed = _this select 1;
+	params["","_placed"];
+
     [_this,"tac1_admin_fnc_zeusServerObjectPlacedSync",false] spawn BIS_fnc_MP;
     
     if (local _placed) then {

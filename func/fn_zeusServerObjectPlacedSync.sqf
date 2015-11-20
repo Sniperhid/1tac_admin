@@ -1,6 +1,4 @@
-private["_curator","_placed"];
-_curator = _this select 0;
-_placed = _this select 1;
+params["_curator","_placed"];
 
 if (local _placed) then {
     if({!isNil _x} count ["f_param_AISkill_BLUFOR","f_param_AISkill_INDP","f_param_AISkill_OPFOR"] > 0) then {

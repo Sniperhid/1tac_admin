@@ -13,9 +13,17 @@ while {_i < count _config} do {
     };
     
     if (_subtitle == "") then {
-        _control lbAdd (format ["%1 - %2",_title,_description]); 
+        if (_description == "") then {
+            _control lbAdd (format ["%1",_title]);
+        } else {
+            _control lbAdd (format ["%1 - %2",_title,_description]);
+        };
     } else {
-        _control lbAdd (format ["%1 - %2 - %3",_title,_subtitle,_description]); 
+        if (_description == "") then {
+            _control lbAdd (format ["%1 - %2",_title,_subtitle]); 
+        } else {
+            _control lbAdd (format ["%1 - %2 - %3",_title,_subtitle,_description]); 
+        };
     };
     _control lbSetData[_i,configName (_config select _i)];
     _i = _i + 1;

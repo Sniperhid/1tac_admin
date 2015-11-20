@@ -1,8 +1,5 @@
-private["_x","_y","_type","_fullmapWindow","_pos","_target"];
-_fullmapWindow = _this select 0;
-_type = _this select 1;
-_x = _this select 2;
-_y = _this select 3;
+private["_pos","_target"];
+params["_fullmapWindow","_type","_x","_y"];
 
 if (_type == 0) then { // left click
 	// teleport the unit.
