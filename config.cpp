@@ -7,8 +7,8 @@ class CfgPatches
 		worlds[] = {};
 		requiredAddons[] = {"a3_data_f","a3data"};
 		requiredVersion = 1.0;
-		author[] = {"Snippers","Wolfenswan"};
-		authorUrl = "www.teamonetactical.com";
+		author = "Snippers";
+		url = "www.teamonetactical.com";
 	};
 };
 
@@ -26,6 +26,7 @@ class CfgFunctions
 				postInit=1;
 				file = "1tac_admin\init.sqf";
 			};
+			class actionAiHuntPlayers {};
 			class actionGiveZeus {};
 			class actionGiveZeusSelf {};
 			class actionGroupTeleport {};
@@ -44,6 +45,7 @@ class CfgFunctions
 			class teleportMapClick {};
 			class teleportMapLoaded {};
 			class messageAdmin {};
+			class aiHuntPlayers {};
 		};
 		class scripts
 		{
@@ -51,9 +53,4 @@ class CfgFunctions
 			class checkMods {};
 		};
 	};
-};
-
-
-class CfgDifficulties {
-	default = "Veteran";
 };

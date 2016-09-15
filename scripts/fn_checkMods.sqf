@@ -3,12 +3,11 @@
 if (!isMultiplayer) exitWith {};
 
 // Mod | Version
-private ["_mods","_version"];
-_mods = [];
+private _mods = [];
 _mods resize (count activatedAddons);
 
 {
-    _version = parseNumber (getText (configFile >> "CfgPatches" >> (_x) >> "version"));
+    private _version = parseNumber (getText (configFile >> "CfgPatches" >> (_x) >> "version"));
     _mods set [_forEachIndex,[_x,_version]];
 } forEach activatedAddons;
 
@@ -21,17 +20,15 @@ if (isServer) then {
 	
 	[] spawn {
 		waitUntil{uiSleep 1; !isNil "tac1_serverAddons"};
-		private ["_overlap","_extraAddons","_clientEntry","_missingAddons","_message"];
-		
                 
-        _overlap = (tac1_clientAddons arrayIntersect tac1_serverAddons);
-        _extraAddons = tac1_clientAddons - _overlap;
-        _missingAddons = tac1_serverAddons - _overlap;
+        private _overlap = (tac1_clientAddons arrayIntersect tac1_serverAddons);
+        private _extraAddons = tac1_clientAddons - _overlap;
+        private _missingAddons = tac1_serverAddons - _overlap;
 				
 		uiSleep 2;
 		if (count _missingAddons > 0) then {
             if (count _missingAddons > 20) then { _missingAddons deleteRange [20,(count _missingAddons - 1)]; };
-			_message = format["[MOD MISMATCH][CLIENT IS MISSING] Player: %1 : %2",profileName,str _missingAddons];
+			private _message = format["[MOD MISMATCH][CLIENT IS MISSING] Player: %1 : %2",profileName,str _missingAddons];
 			[_message,'tac1_admin_fnc_messageAdmin',true] call BIS_fnc_MP;
 			//systemChat _message;
 		};

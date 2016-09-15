@@ -1,12 +1,11 @@
  // Fill list with the players
 disableSerialization;
-private["_i","_control","_group","_addGroup"];
 
-_control = ((findDisplay 1888) displayCtrl 1500);
-_i = 0;
+private _control = ((findDisplay 1888) displayCtrl 1500);
+private _i = 0;
 {
-    _group = _x;
-    _addGroup = false;
+    private _group = _x;
+    private _addGroup = false;
     {
         if (isPlayer _x) then {
             if (!_addGroup) then {

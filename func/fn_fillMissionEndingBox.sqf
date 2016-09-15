@@ -1,13 +1,13 @@
 disableSerialization;
-private["_i","_control","_config","_title","_description","_subtitle"];
-_control = ((findDisplay 1895) displayCtrl 1550);
-_i = 0;
-_config = missionconfigfile >> "CfgDebriefing";
+
+private _control = ((findDisplay 1895) displayCtrl 1550);
+private _i = 0;
+private _config = missionConfigFile >> "CfgDebriefing";
 
 while {_i < count _config} do {
-    _title = getText (_config select _i >> "title");
-    _description = getText (_config select _i >> "description");
-    _subtitle = "";
+    private _title = getText (_config select _i >> "title");
+    private _description = getText (_config select _i >> "description");
+    private _subtitle = "";
     if (isClass (_config select _i >> "subtitle")) then {
         _subtitle = getText (_config select _i >> "subtitle");
     };
@@ -29,8 +29,11 @@ while {_i < count _config} do {
     _i = _i + 1;
 };
 
-_control lbAdd "*** Arma 3 Vanilla Mission Success ***";
+_i = _control lbAdd "*** Arma 3 Vanilla Mission Success ***";
 _control lbSetData[_i,"asdasdasdga"];
+_i = _control lbAdd "*** Arma 3 Vanilla Mission Failure ***";
+_control lbSetData[_i,"HARD_MISSION_END"];
+
 
 //Alive Players/Ending Data.
 _control = ((findDisplay 1895) displayCtrl 1002);

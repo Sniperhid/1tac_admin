@@ -19,7 +19,7 @@ if (alive player && !(player isKindOf "VirtualCurator_F")) then {
 };
 
 //Overide with selections.
-if ((typeName _target) isEqualTo "GROUP") then {
+if (_target isEqualType grpNull) then {
     if ((count units _target) > 0) then {
         _pos = getPos ((units _target) select 0);
     };

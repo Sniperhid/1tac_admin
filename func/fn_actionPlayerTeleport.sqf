@@ -1,11 +1,11 @@
 disableSerialization;
-private["_control","_value","_target"];
-_control = ((findDisplay 1888) displayCtrl 1500);
+
+private _control = ((findDisplay 1888) displayCtrl 1500);
 if ((lbCurSel _control) == -1) exitWith{ hint "No unit was selected";};
 
-_value = _control lbData (lbCurSel _control);
+private _value = _control lbData (lbCurSel _control);
 closeDialog 1888;
-_target = objNull;
+private _target = objNull;
 
 {
     _group = _x;

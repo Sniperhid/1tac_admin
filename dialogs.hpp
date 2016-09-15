@@ -51,6 +51,23 @@ $[
 ]
 */
 
+/* #Xyzuxo
+$[
+	1.063,
+	["missionEndingTool",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
+	[1800,"missionEndingFrame",[1,"",["0.29375 * safezoneW + safezoneX","0.258 * safezoneH + safezoneY","0.4125 * safezoneW","0.506 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1000,"endingTitle",[1,"Mission End Tool",["0.31541 * safezoneW + safezoneX","0.2756 * safezoneH + safezoneY","0.159844 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1500,"playerListBox",[1,"",["0.304062 * safezoneW + safezoneX","0.4494 * safezoneH + safezoneY","0.391875 * safezoneW","0.253 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1600,"missionEndingCloseButton",[1,"Close",["0.659844 * safezoneW + safezoneX","0.28 * safezoneH + safezoneY","0.0360937 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1602,"missionEndingReturnButton",[1,"Return (Admin Menu)",["0.556719 * safezoneW + safezoneX","0.28 * safezoneH + safezoneY","0.0928125 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1603,"endSmoothButton",[1,"End (Animated)",["0.37625 * safezoneW + safezoneX","0.7112 * safezoneH + safezoneY","0.0773437 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1604,"endButton (Instant)",[1,"End (Instant)",["0.520625 * safezoneW + safezoneX","0.7112 * safezoneH + safezoneY","0.0773437 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1100,"playersAlive",[1,"players Alive:",["0.304063 * safezoneW + safezoneX","0.313 * safezoneH + safezoneY","0.299062 * safezoneW","0.132 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1601,"aiHuntPlayersButton",[1,"AI hunt players",["0.613437 * safezoneW + safezoneX","0.313 * safezoneH + safezoneY","0.0825 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+]
+*/
+
+
 
 class playerListDialog {
 	idd = 1888;
@@ -279,7 +296,8 @@ class adminMenuDialog {
             y = 0.643 * safezoneH + safezoneY;
             w = 0.0825 * safezoneW;
             h = 0.022 * safezoneH;
-            action = "closeDialog 1889; if(isNil 'respawnMenuRoles') then { hint 'This Mission has no Respawn'; } else { createDialog 'respawnMenuDialog'; };";
+            //(isClass (configFile >> "respawnMenuDialog")) or (isClass (missionConfigFile >> "respawnMenuDialog"))
+            action = "closeDialog 1889; if ((isClass (configFile >> 'respawnMenuDialog')) or (isClass (missionConfigFile >> 'respawnMenuDialog'))) then { createDialog 'respawnMenuDialog';} else { hint 'This Mission has no Respawn'; };";
         };
 
     };
@@ -372,8 +390,18 @@ class missionEndingDialog {
             text = "players Alive:"; //--- ToDo: Localize;
             x = 0.304063 * safezoneW + safezoneX;
             y = 0.313 * safezoneH + safezoneY;
-            w = 0.391875 * safezoneW;
+            w = 0.299062 * safezoneW;
             h = 0.132 * safezoneH;
+        };
+        class aiHuntPlayersButton: adminMenu_RscButton
+        {
+            idc = 1601;
+            text = "AI hunt players"; //--- ToDo: Localize;
+            x = 0.613437 * safezoneW + safezoneX;
+            y = 0.313 * safezoneH + safezoneY;
+            w = 0.0825 * safezoneW;
+            h = 0.022 * safezoneH;
+            action="[] spawn tac1_admin_fnc_actionAiHuntPlayers;";
         };
         ////////////////////////////////////////////////////////
         // GUI EDITOR OUTPUT END

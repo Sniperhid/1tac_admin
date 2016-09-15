@@ -1,6 +1,5 @@
 if !(isServer) exitWith {};
 
-private ["_curator", "_i", "_isValidCurator", "_units"];
 params["_unit"];
 
 if (isNull _unit) exitWith {};
@@ -9,7 +8,7 @@ if (isNull _unit) exitWith {};
 if (!isNull (getAssignedCuratorLogic _unit)) exitWith{}; //already is a curator.
 
 //Server for an empty curator space. (Assumes mission doesn't preallocate zeuses).
-_isValidCurator = false;
+private _isValidCurator = false;
 {
     _isValidCurator = false;
     if (isNull (getAssignedCuratorUnit _x)) then { 
@@ -38,7 +37,7 @@ if (!_isValidCurator) then {
         f_var_sideCenter = createCenter sideLogic;
     };
 
-    _curator = (createGroup f_var_sideCenter) createUnit ["ModuleCurator_F",[0,0,0] , [], 0, ""];
+    private _curator = (createGroup f_var_sideCenter) createUnit ["ModuleCurator_F",[0,0,0] , [], 0, ""];
     _curator setVariable ["owner",format["%1",_unit,true]];
     _curator setVariable ["Addons",3,true];
     _curator setVariable ["SNIP_ADMIN",true,true];
@@ -52,7 +51,7 @@ if (!_isValidCurator) then {
     //Delay to prevent notification.
     //_curator spawn {
     //    sleep 6;
-    _units = allPlayers;
+    private _units = allPlayers;
     {
         if (!alive _x or (side _x isEqualTo sideLogic)) then {
             _units set [_forEachIndex,0];  

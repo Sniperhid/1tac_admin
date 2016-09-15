@@ -1,5 +1,4 @@
 disableSerialization;
-private["_name","_icon","_color"];
 params["_fullmapWindow"];
 
 if (isNil "f_cam_blufor_color") then {
@@ -12,14 +11,14 @@ if (isNil "f_cam_blufor_color") then {
 
 {
 	if(alive _x) then {
-		_name = "";
+		private _name = "";
 		if(isPlayer _x) then {_name = name _x};
 		if(leader _x == _x && {isPlayer _x} count units _x > 0) then {_name = format["%1 - %2",toString(toArray(groupID (group _x)) - [45]),_name]};
 		if(vehicle _x != _x && crew (vehicle _x) select 0 == _x || vehicle _x == _x) then
 		{
-			_icon = (vehicle _x getVariable ["f_cam_icon",""]);
+			private _icon = (vehicle _x getVariable ["f_cam_icon",""]);
 			if(_icon == "") then {_icon = gettext (configfile >> "CfgVehicles" >> typeOf (vehicle _x) >> "icon");vehicle _x setVariable ["f_cam_icon",_icon]};
-            _color = switch (side _x) do {
+            private _color = switch (side _x) do {
                 case blufor: {f_cam_blufor_color};
                 case opfor: {f_cam_opfor_color};
                 case independent: {f_cam_indep_color};
@@ -33,11 +32,11 @@ if (isNil "f_cam_blufor_color") then {
 
 //Map Markers - Credit AACO
 {
-    _markerShape = markerShape _x;
-    _markerPos = getMarkerPos _x;
-    _markerSize = getMarkerSize _x;
-    _markerColor = (configfile >> "CfgMarkerColors" >> getMarkerColor _x >> "color") call BIS_fnc_colorConfigToRGBA;
-    _markerDir = markerDir _x;
+    private _markerShape = markerShape _x;
+    private _markerPos = getMarkerPos _x;
+    private _markerSize = getMarkerSize _x;
+    private _markerColor = (configfile >> "CfgMarkerColors" >> getMarkerColor _x >> "color") call BIS_fnc_colorConfigToRGBA;
+    private _markerDir = markerDir _x;
     
     switch (_markerShape) do {
         case "RECTANGLE": {
