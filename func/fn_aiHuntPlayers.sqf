@@ -130,7 +130,7 @@ private _oldGroups = [];
                 if ((_targets pushBackUnique _closestTarget) != -1) then {
                     // Share this new contact with the rest of the group.
                     {
-                        _x reveal _closestTarget;
+                        _x reveal [_closestTarget,1.5]; // Reveal side.
                     } forEach _hunters;
                     
                 };

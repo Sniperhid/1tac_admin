@@ -5,6 +5,6 @@ if (isServer) then {
 
 if (!hasInterface) exitWith {};
 
-if (((getPlayerUID player) in tac1_adminIDs) or (serverCommandAvailable "#kick")) then {
+if (((getPlayerUID player) in tac1_adminIDs) or (serverCommandAvailable "#kick") or (!isMultiplayer)) then {
 	systemChat _this;
 };
