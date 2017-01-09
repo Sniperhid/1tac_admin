@@ -5,7 +5,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		worlds[] = {};
-		requiredAddons[] = {"a3_data_f","a3data"};
+		requiredAddons[] = {"a3_data_f","a3data","cba_main"};
 		requiredVersion = 1.0;
 		author = "Snippers";
 		url = "www.teamonetactical.com";
@@ -14,6 +14,7 @@ class CfgPatches
 
 #include "defines.hpp"
 #include "dialogs.hpp"
+#include "CfgEventHandlers.hpp"
 
 class CfgFunctions
 {
@@ -22,10 +23,6 @@ class CfgFunctions
 		class adminMenu
 		{
 			file="1tac_admin\func";
-			class Init { 
-				postInit=1;
-				file = "1tac_admin\init.sqf";
-			};
 			class actionAiHuntPlayers {};
 			class actionGiveZeus {};
 			class actionGiveZeusSelf {};

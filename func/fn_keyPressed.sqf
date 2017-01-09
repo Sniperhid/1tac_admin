@@ -24,7 +24,9 @@ if (!alive player) then {
 	};
 };
 
-if (isServer or ((getPlayerUID player) in tac1_adminIDs) or (serverCommandAvailable "#kick")) then {
+private _localID = [] call tac1_admin_local_uid;
+
+if (isServer or (_localID in ([] call tac1_adminIDs)) or (serverCommandAvailable "#kick")) then {
     createDialog 'adminMenuDialog';
 } else {
     hint "You are not logged in as an admin.";
