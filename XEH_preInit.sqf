@@ -2,7 +2,7 @@
 tac1_admin_local_uid = {""};
 
 [{!isNull player}, {
-    tac1_admin_local_uid = compileFinal ("{'" + (getPlayerUID player) + "'}");
+    tac1_admin_local_uid = compileFinal ("'" + (getPlayerUID player) + "'");
 }, []] call CBA_fnc_waitUntilAndExecute;
 
 
