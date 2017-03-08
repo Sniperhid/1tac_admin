@@ -17,9 +17,7 @@ if (_indCount > _playerCount) then {
 };
 
 // Find AI Sides.
-private _aiSides = [];
-
-_aiSides = [west, east, independent] select {[_playerSide, _x] call BIS_fnc_sideIsEnemy};
+private _aiSides = [west, east, independent] select {[_playerSide, _x] call BIS_fnc_sideIsEnemy};
 
 private _hunters = allUnits select {(!isPlayer _x) && {(side _x) in _aiSides}};
 
