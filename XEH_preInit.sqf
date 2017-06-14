@@ -13,7 +13,8 @@ tac1_adminIDs = compileFinal '[
 	 "76561197960707355",
 	 "76561198008241201",
 	 "76561198031183429",
-	 "76561198010479904"
+	 "76561198010479904",
+     "76561198052428514"
 ]';
 
 // --- GetPlayerUID ---
@@ -23,6 +24,7 @@ tac1_adminIDs = compileFinal '[
 // Luk
 // Nick
 // Sam
+// Snake
 
 // 102 
 /*tac1_adminIDs = ["76561197999982850",
@@ -34,10 +36,6 @@ if (hasInterface) then {
 	if (!isNil "TMF_event_fnc_addEventHandler") then {
 		["tmf_spectator_keyDown",{_this call tac1_admin_fnc_keyPressed}] call TMF_event_fnc_addEventHandler;
 	};
-    [] spawn {
-        waitUntil {uiSleep 0.5; !isNull (findDisplay 46)};
-        (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call tac1_admin_fnc_keyPressed"];
-    };
 };
 
 

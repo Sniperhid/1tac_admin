@@ -80,7 +80,7 @@ private _oldGroups = [];
             };
         };
         //private _nTargets = (_position nearEntities ["CAManBase", _range]) select {side _x == _targetSide && alive _x && {!(_x getVariable ["ACE_isUnconscious", false])}};
-        _targets = (_targets select {alive _x}) - [objNull];
+        _targets = (_targets select {alive _x}); /* alive checks remove null */
         {
             private _unit = _x;
             private _closestTarget = _unit findNearestEnemy _unit;
@@ -129,7 +129,7 @@ private _oldGroups = [];
             };
 
             if (!isNull _closestTarget) then {
-                _unit doMove (getPos _closestTarget); //doMove
+                _unit doMove (getPosATL _closestTarget); //doMove
             };
 
         } forEach _hunters;
